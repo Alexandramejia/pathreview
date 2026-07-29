@@ -20,12 +20,12 @@ The `/health` endpoint reports service status but not safety system activity, so
 **Reproduction commit link:** [link to commit documenting the reproduced issue]
 
 **Reproduction summary:**
-[1–2 sentences: How did you reproduce the issue? What did you observe?]
+I started the backend and Redis/Postgres, then loaded `/health` in the browser. No matter what, it always showed `"safety_events_last_hour": 0`. That confirms the bug: the number is just hardcoded to 0 instead of actually being counted.
 
 **PLAN.md link:** [link to PLAN.md in your fork]
 
 **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded]
 
 **Blockers or open questions:**
-[Anything you're still uncertain about going into Week 9, or leave blank]
+While testing, `/health` also showed as "unhealthy" for two other reasons that aren't part of this bug: the Postgres check and the Redis check are both broken in small unrelated ways. Not something I need to fix for this issue, but flagging it in case it matters later.
 
